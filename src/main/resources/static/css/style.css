@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+/*signUp*/
+#signUpWrap{
+	height: 600px;
+	font-family: 'Gugi', cursive;
+}
+.signUpHr{
+	width:150px;
+}
+.bananaTitle{
+	color:#f7eb09;
+	font-family: 'Bungee', cursive;
+}
+#possibleId{
+	text-align:center;
+	color:blue;
+}
+#impossibleId{
+	text-align:center;
+	color:red;
+}
+
+#joinBtn{
+	background-color:#f7eb09;
+}

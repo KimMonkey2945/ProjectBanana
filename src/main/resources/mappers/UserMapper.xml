@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> <!-- mybatis dtd로 검색해서 가져오기!! -->
+
+<mapper namespace="com.banana.user.dao.UserDAO">
+
+	<insert id="insertUser" parameterType="map">
+		
+		INSERT INTO `user`
+		(
+			`loginId`
+			,`password`
+			,`nickName`
+			,`email`
+			,`createdAt`
+			,`updatedAt`
+		)VALUES(
+			#{loginId}
+			,#{password}
+			,#{nickName}
+			,#{email}
+			,now()
+			,now()
+		)
+	
+	</insert>
+	
+	<select id="selectPossibleId" resultType="com.banana.user.model.User" parameterType="String">
+	
+		SELECT
+			`loginId`
+		FROM
+			`user`
+		WHERE
+			`loginId` = #{loginId}
+	
+	</select>
+
+
+</mapper> 
