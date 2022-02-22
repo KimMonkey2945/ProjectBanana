@@ -20,8 +20,11 @@ public class UserBO {
 		return userDAO.insertUser(loginId, encPassword, nickName, email);
 	}
 	
-	
 	public User checkId(String loginId) {
 		return userDAO.selectPossibleId(loginId);
+	}
+	
+	public User getUser(String userId, String password) {
+		return userDAO.selectUser(userId, EncryptUtils.md5(password));
 	}
 }

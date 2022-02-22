@@ -35,6 +35,10 @@
 			`loginId` = #{loginId}
 	
 	</select>
+	
+	<select id="selectUser" resultType="com.banana.user.model.User" parameterType="map">
+	
+	</select>
 
 
 </mapper> 

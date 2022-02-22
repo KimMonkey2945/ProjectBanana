@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -55,5 +54,20 @@ public class UserRestController {
 		return result;
 	}
 	
-	
+	@PostMapping("/signIn")
+	public Map<String, String> signIn(
+			@RequestParam("loginId") String loginId
+			,@RequestParam("password") String password){
+		
+		User user = userBO.getUser(loginId, password);
+		Map<String, String> result = new HashMap<>();
+		
+		if(user != null) {
+			result.put("result", "success");
+		}else {
+			result.put("result", "fail");
+		}
+		
+		return result;
+	}
 }

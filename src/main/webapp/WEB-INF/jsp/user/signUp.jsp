@@ -46,25 +46,24 @@
 							<input class="form-control" type="text" id="loginIdInput" placeholder="아이디입력"/>
 							<div id="possibleId">사용 가능한 아이디입니다.</div> 
 							<div id="impossibleId">이미 사용중인 아이디입니다.</div>
+							<div id="checkLoginId">아이디는 6~16자로 제한됩니다.</div>
 						</div>
 						<input class="form-control my-3" type="text" id="nickNameInput" placeholder="사용자이름" />
 						<input class="form-control my-3" type="password" id="passwordInput" placeholder="비밀번호" />
 						<input class="form-control my-3" type="password" id="passwordCheck" placeholder="비밀번호 확인" />
 						<div class="passwordCheck small text-danger">비밀번호가 일치하지 않습니다.</div>
-						<input class="form-control my-3" type="email" id="emailInput" placeholder="이메일" />
+						<input class="form-control my-3" type="text" id="emailInput" placeholder="이메일" />
 						<button class="form-control btn btn-block" id="joinBtn" type="button">가입</button>
 					</div>
 				</div>
-
-			<div class="mt-3 d-flex align-items-center justify-content-center">
-				Banana 회원이신가요??</div>
-			<div class="d-flex align-items-center justify-content-center">
-				<a class="mt-2" href="/user/signin_view">로그인</a>
-			</div>
+			
+				<div class="mt-3 d-flex justify-content-center">
+					<a class="signInLink" href="/user/sign_in"><span class="banana mr-2">Banana</span>아이디로 로그인하기</a>
+				</div>
 		</div>
 		
 		<footer class=" mt-3 d-flex justify-content-center align-items-end">
-			<div class="mt-5 small text-secondary">© 2022 Banana from KimMonkey</div>
+			<div class="mt-5 small text-secondary">Copyright © 2022 Banana from KimMonkey</div>
 		</footer>
 	</div>
 		
@@ -76,6 +75,20 @@
 			$("#possibleId").hide();
 			$("#impossibleId").hide();
 			$(".passwordCheck").hide();
+			$("#checkLoginId").hide();
+			
+				$("#loginIdInput").blur(function(){
+					var loginIdInput = $("#loginIdInput").val();
+					
+					if(loginIdInput == "" || loginIdInput.length < 6 || loginIdInput.length >= 17){
+						$("#checkLoginId").show();
+						$("#possibleId").hide();
+						return false;
+					}else{
+						$("#checkLoginId").hide();
+					}
+				});
+			
 			
 			$("#loginIdInput").keyup(function(){
 				
@@ -88,7 +101,7 @@
 					success:function(data){
 						if(data.result == "success"){
 							$("#possibleId").show();
-							 $("#impossibleId").hide();
+							$("#impossibleId").hide();
 						}else{
 							 $("#impossibleId").show();
 							 $("#possibleId").hide();
@@ -109,6 +122,25 @@
 					return false;
 				}else{
 					$(".passwordCheck").hide();
+				}
+			});
+			
+			function checkEmail(){
+				var email = $("#emailInput").val();
+				var regex=/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+				 return (email != '' && email != 'undefined' && regex.test(email));
+			};
+			
+			
+			$("#emailInput").blur(function(){
+				var email = $("#emailInput").val();
+				
+				if(email == "" || email =="undefined"){
+					return false;
+				}
+				if(!checkEmail(email)){
+					alert("잘못된 형식의 이메일 주소입니다.");
+					return false;
 				}
 			});
 			

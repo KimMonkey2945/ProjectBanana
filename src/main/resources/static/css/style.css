@@ -20,7 +20,32 @@
 	text-align:center;
 	color:red;
 }
-
 #joinBtn{
 	background-color:#f7eb09;
+}
+
+/*signIp*/
+
+#signInWrap{
+	font-family: 'Gugi', cursive;
+}
+
+
+.bananaLogoSignIn{
+	font-size: 25px;
+	color:#f7eb09;
+	font-family: 'Bungee', cursive;
+}
+.login{
+	width:400px;
+	height:700px;
+}
+#loginBtn{
+	background-color:#f7eb09;
+}
+.signInLink{
+	color:black;	
+}
+.banana{
+	color:#f7eb09;
 }
