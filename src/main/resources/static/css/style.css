@@ -38,7 +38,7 @@
 }
 .login{
 	width:400px;
-	height:700px;
+	height:550px;
 }
 #loginBtn{
 	background-color:#f7eb09;
@@ -48,4 +48,16 @@
 }
 .banana{
 	color:#f7eb09;
+}
+.findId{
+	color:black;
+}
+
+/*findLoginInfo*/
+
+.fidWrap{
+	font-family: 'Gugi', cursive;
+}
+
+.findLogin{
 }

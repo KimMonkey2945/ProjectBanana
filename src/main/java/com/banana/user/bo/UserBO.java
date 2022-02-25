@@ -13,11 +13,11 @@ public class UserBO {
 	@Autowired
 	private UserDAO userDAO;
 	
-	public int addUser(String loginId, String password, String nickName, String email) {
+	public int addUser(String loginId, String password, String nickName, String phoneNumber, String email) {
 		
 		String encPassword = EncryptUtils.md5(password);
 		
-		return userDAO.insertUser(loginId, encPassword, nickName, email);
+		return userDAO.insertUser(loginId, encPassword, nickName, phoneNumber, email);
 	}
 	
 	public User checkId(String loginId) {
@@ -26,5 +26,9 @@ public class UserBO {
 	
 	public User getUser(String userId, String password) {
 		return userDAO.selectUser(userId, EncryptUtils.md5(password));
+	}
+	
+	public User findId(String phoneNumber) {
+		return userDAO.selectLoginId(phoneNumber);
 	}
 }

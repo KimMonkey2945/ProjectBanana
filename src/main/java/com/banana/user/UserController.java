@@ -19,4 +19,10 @@ public class UserController {
 		return "/user/signIn";
 	}
 	
+	@GetMapping("/findLogin_Info")
+	public String findLogin_Info(){
+		return "/user/findLoginInfo";
+	}
+	
+	
 }

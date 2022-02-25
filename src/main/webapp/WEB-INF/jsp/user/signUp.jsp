@@ -52,6 +52,7 @@
 						<input class="form-control my-3" type="password" id="passwordInput" placeholder="비밀번호" />
 						<input class="form-control my-3" type="password" id="passwordCheck" placeholder="비밀번호 확인" />
 						<div class="passwordCheck small text-danger">비밀번호가 일치하지 않습니다.</div>
+						<input class="form-control my-3" type="text" id="phonNumberInput" placeholder="전화번호" />
 						<input class="form-control my-3" type="text" id="emailInput" placeholder="이메일" />
 						<button class="form-control btn btn-block" id="joinBtn" type="button">가입</button>
 					</div>
@@ -125,6 +126,30 @@
 				}
 			});
 			
+			function checkPhoneNumber(){
+				var phoneNumber = $("#phonNumberInput").val();
+				var regPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+				return(regPhone.test(phoneNumber));
+			}
+			
+			$("#phonNumberInput").blur(function(){
+				var phoneNumber = $("#phonNumberInput").val();
+			
+				if(phoneNumber == "" || phoneNumber =="undefined"){
+					return false;
+				}
+				
+				if(!checkPhoneNumber(phoneNumber)){
+					alert("잘못된 전화번호 입니다.");
+					return false;
+				}
+			
+			});
+			
+			
+			
+			
+			
 			function checkEmail(){
 				var email = $("#emailInput").val();
 				var regex=/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
@@ -151,6 +176,7 @@
 				var password = $("#passwordInput").val();
 				var passwordCheck = $("#passwordCheck").val();
 				var nickName = $("#nickNameInput").val();
+				var phoneNumber = $("#phonNumberInput").val();
 				var email = $("#emailInput").val();
 				
 				
@@ -174,8 +200,18 @@
 					return;
 				}
 				
+				if(phonNumberInput == ""){
+					alert("전화번호를 입력해주세요!!")
+					return;
+				}
+				
 				if(email == ""){
 					alert("이메일을 입력하세요!!")
+					return false;
+				}
+				
+				if(!checkPhoneNumber(phoneNumber)){
+					alert("잘못된 전화번호 입니다.");
 					return false;
 				}
 				
@@ -183,7 +219,7 @@
 				$.ajax({
 					type:"post",
 					url:"/user/signUp",
-					data:{"loginId":loginId, "password":password, "name":name, "nickName":nickName, "email":email},
+					data:{"loginId":loginId, "password":password, "name":name, "nickName":nickName,"phoneNumber":phoneNumber, "email":email},
 					success:function(data){
 						if(data.result == "success"){
 							location.href="/user/signin_view";

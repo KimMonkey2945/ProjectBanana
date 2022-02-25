@@ -12,11 +12,14 @@ public interface UserDAO {
 			@Param("loginId") String loginId
 			,@Param("password") String password
 			,@Param("nickName") String nickName
+			,@Param("phoneNumber") String phoneNumber
 			,@Param("email") String email);
 	
 	public User selectPossibleId(@Param("loginId") String loginId);
 	
 	public User selectUser(@Param("loginId") String loginId
 							,@Param("password") String password);
+	
+	public User selectLoginId(@Param("phoneNumber") String phoneNumber);
 	
 }

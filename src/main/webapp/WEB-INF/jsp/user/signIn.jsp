@@ -44,27 +44,81 @@
 		
 		<div class="d-flex justify-content-center">	
 			<div class="login my-3">
-				<input class="form-control" id="idInput" type="text" placeholder="아이디를 입력하세요" >
-				<input class="form-control mt-3" id="passwordInput" type="password" placeholder="비밀번호를 입력하세요" >
 				
-				<div class="mt-3">
-					<input class="form-control btn" id="loginBtn" type="button" value="로그인">
-				</div>
+				<form id="loginForm">
+					<input class="form-control" id="loginIdInput" type="text" placeholder="아이디를 입력하세요" >
+					<input class="form-control mt-3" id="passwordInput" type="password" placeholder="비밀번호를 입력하세요" >
+					<div class="mt-3">
+						<input class="form-control btn" id="loginBtn" type="submit" value="로그인">
+					</div>
+				</form>
+				
+				
 				
 				<hr>
 				
 				<div class="mt-3 d-flex justify-content-center">
 					<a class="signInLink" href="/user/sign_up">아직 <span class="banana">Banana</span> 회원이 아니신가요?</a>
 				</div>
-				<div>
-					<a href=""></a>
+				<div class="mt-3 d-flex justify-content-center">
+					<a class="findId" href="">아이디 / 비밀번호 찾기</a>
 				</div>
 				
 			</div>
 		</div>
 		
+		
+		<footer class=" mt-3 d-flex justify-content-center align-items-end">
+			<div class="mt-5 small text-secondary">Copyright © 2022 Banana from KimMonkey</div>
+		</footer>
+		
 	</div>
 	
+	<script>
+	
+		$(document).ready(function(){
+			
+			$("#loginForm").on("submit", function(e){
+				e.preventDefault();
+				
+				var loginId = $("#loginIdInput").val();
+				var password = $("#passwordInput").val();
+				
+				if(loginId == ""){
+					alert("아이디를 입력해주세요.")
+					return;
+				}
+				if(password == ""){
+					alert("비밀번호를 입력해주세요.")
+					return;
+				}
+				
+				$.ajax({
+					type:"post",
+					url:"/user/signIn",
+					data:{"loginId":loginId, "password":password},
+					success:function(data){
+						if(data.result == "success"){
+							location.href="#";
+						}else{
+							alert("아이디나 비밀번호를 확인해주세요.")
+						}
+					},
+					error:function(){
+						alert("에러발생!!")
+					}
+				});
+				
+				
+				
+				
+			});
+			
+			
+		});
+	
+	
+	</script>
 	
 	
 	
