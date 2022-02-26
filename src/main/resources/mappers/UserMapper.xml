@@ -56,14 +56,7 @@
 
 	<select id="selectLoginId" resultType="com.banana.user.model.User" parameterType="map">
 		SELECT
-			`id`
- 			,`loginId`
- 			,`password`
- 			,`nickName`
- 			,`phoneNumber`
- 			,`email`
- 			,`createdAt`
- 			,`updatedAt`
+ 			`loginId`
 		FROM
 			`user`
 		WHERE

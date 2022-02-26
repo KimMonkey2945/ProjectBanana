@@ -88,8 +88,7 @@ public class UserRestController {
 	}
 	
 	@PostMapping("/findId")
-	public Map<String, String> findId(@RequestParam("phoneNumber") String phoneNumber
-								, Model model){
+	public Map<String, String> findId(@RequestParam("phoneNumber") String phoneNumber){
 		
 		User user = userBO.findId(phoneNumber);
 		
@@ -97,7 +96,6 @@ public class UserRestController {
 		
 		if(user != null) {
 			result.put("result", "success");	
-			model.addAttribute("user", user);
 		}else {
 			result.put("result", "fail");
 		}

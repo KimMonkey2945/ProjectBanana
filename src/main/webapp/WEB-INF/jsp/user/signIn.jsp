@@ -58,10 +58,10 @@
 				<hr>
 				
 				<div class="mt-3 d-flex justify-content-center">
-					<a class="signInLink" href="/user/sign_up">아직 <span class="banana">Banana</span> 회원이 아니신가요?</a>
+					<a class="signInLink" href="/user/findLogin_Info">아직 <span class="banana">Banana</span> 회원이 아니신가요?</a>
 				</div>
 				<div class="mt-3 d-flex justify-content-center">
-					<a class="findId" href="">아이디 / 비밀번호 찾기</a>
+					<a class="findId" href="/user/findLogin_Info">아이디 / 비밀번호 찾기</a>
 				</div>
 				
 			</div>

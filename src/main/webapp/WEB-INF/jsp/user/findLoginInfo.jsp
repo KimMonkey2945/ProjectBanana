@@ -51,7 +51,7 @@
 					<div id="findId">
 						<input class="form-control" id="phoneNumberInput" type="text" placeholder="전화번호를 입력하세요.">
 						<input class="btn form-control" id="findIdBtn" type="button" value="확인"/>
-						<div> ${user.loginId}</div>
+						<div></div>
 					</div>
 					
 					<div class="d-none" id="findPw">	
@@ -115,7 +115,7 @@
 					data:{"phoneNumber":phoneNumber},
 					success:function(data){
 						if(data.result == "success"){
-							
+							location.href="/user/findLogin_Id"
 						}else{
 							alert("일치하는 아이디가 없습니다.")
 						}
