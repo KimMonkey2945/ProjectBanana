@@ -51,9 +51,8 @@
 					<div id="findId">
 						<input class="form-control" id="phoneNumberInput" type="text" placeholder="전화번호를 입력하세요.">
 						<input class="btn form-control" id="findIdBtn" type="button" value="확인"/>
-						<div></div>
 					</div>
-					
+					<div>${result.loginId }</div>
 					<div class="d-none" id="findPw">	
 						<input class="form-control" id="loginIdInput" type="text" placeholder="아이디를 입력하세요.">
 						<input class="form-control mt-3" id="emailInput" type="text" placeholder="이메일을 입력하세요.">
@@ -115,9 +114,9 @@
 					data:{"phoneNumber":phoneNumber},
 					success:function(data){
 						if(data.result == "success"){
-							location.href="/user/findLogin_Id"
+							alert("!!!!")
 						}else{
-							alert("일치하는 아이디가 없습니다.")
+							alert("일치하는 아이디가 없습니다.");
 						}
 					},
 					error:function(){
